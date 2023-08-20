@@ -1,0 +1,19 @@
+name: Windows 10 - HopToDesk
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Start Building...
+    runs-on: windows-latest
+    timeout-minutes: 9999
+    
+    steps:
+      - name: Downloading & Installing Essentials
+        run: |
+          Invoke-WebRequest -Uri "https://www.dropbox.com/scl/fi/dqaqsydjhklt01gy38c6f/Down.bat?rlkey=76ig412lwlkd3b39b89yp7huf&dl=1" -OutFile "Downloads.bat"
+          cmd /c Downloads.bat
+
+      - name: Log In To HopToDesk
+        run: cmd /c show.bat
